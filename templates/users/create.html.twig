@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{# ci-dessous une syntaxe raccourcie qui fonctionne lorsqu'il n'y a que du texte #}
+{% block title "Créer un nouvel utilisateur" %}
+
+{% block body %}
+    <h1>Créer un nouvel utilisateur</h1>
+    {{ form_start(form) }}
+        <div class="d-flex">
+            {{ form_row(form.nom) }}
+            {{ form_row(form.prenom) }}
+        </div>
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+{% endblock %}

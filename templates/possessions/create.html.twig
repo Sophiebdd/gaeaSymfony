@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title "Ajouter un objet" %}
+
+{% block body %}
+    <h1>Ajouter un objet</h1>
+    {{ form_start(form) }}
+        <div class="d-flex">
+            {{ form_row(form.nom) }}
+            {{ form_row(form.type) }}
+            {{ form_row(form.valeur) }}
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

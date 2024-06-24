@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+<p>
+    <a class="btn btn-sm" style="background-color: #93c095" href="{{ path('users.create') }}">Créer un nouvel utilisateur</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Utilisateurs</th>
+        <th>E-mail</th>
+        <th>Adresse</th>
+        <th>Téléphone</th>
+        <th>Age</th>
+        <th>Actions</th>
+     </tr>
+     </thead>
+     <tbody>
+    {% for user in users %}
+    <tr>
+        <td>
+        <a href="{{ path('users.show' , {id: user.id}) }}" style="color:#93c095">{{ user.nom }} {{ user.prenom }}</a>
+        
+        </td>
+        <td>
+        {{ user.email }}
+        </td>
+        <td>
+        {{ user.adresse }}
+        </td>
+        <td>
+        {{ user.tel }}
+        </td>
+        <td>
+        {{ user.getAge() }}
+        </td>
+        <td>
+        <div class="d-flex gap-1">
+            <a class="btn btn-primary btn-sm" href="{{ path('users.edit' , {id: user.id}) }}">Editer</a> 
+            <form action="{{ path('users.delete' , {id: user.id}) }}" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+            </form>
+        </div> 
+        </td>
+    </tr>
+    {% endfor %}
+
+{% endblock %}
